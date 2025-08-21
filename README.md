@@ -1,172 +1,158 @@
-# FBMC - But Vibe Coded with Kiro.dev 🎭🤖
+# FBMC - Được Vibe Code với Kiro.dev 🎭🤖
 
-> **⚡ From idea to production in one AI-powered coding session!**
+> **⚡ Từ ý tưởng đến sản phẩm hoàn chỉnh chỉ trong một phiên code AI!**
 
-A sleek meme storage application showcasing the power of [**Kiro.dev**](https://kiro.dev) - the AI development environment that turns conversations into code. This entire full-stack app was built through natural language, no traditional coding grind required!
+Một ứng dụng lưu trữ meme hiện đại thể hiện sức mạnh của [**Kiro.dev**](https://kiro.dev) - môi trường phát triển AI biến cuộc trò chuyện thành code. Toàn bộ ứng dụng full-stack này được xây dựng thông qua ngôn ngữ tự nhiên, không cần phải code truyền thống!
 
-## 🚀 **What Kiro.dev Built:**
+## 🚀 **Những gì Kiro.dev đã xây dựng:**
+- ✨ **Frontend Next.js hoàn chỉnh** với các component UI hiện đại
+- 🏗️ **Hạ tầng AWS** với CDK (S3 + CloudFront)  
+- �  **Tính năng xem trước trực tiếp** và upload kéo thả
+- 🔒 **Bảo mật cấp production** với truy cập S3 riêng tư
+- � **Thoiết kế responsive** hoạt động mọi nơi
 
-- ✨ **Complete Next.js frontend** with modern UI components
-- 🏗️ **AWS infrastructure** with CDK (S3 + CloudFront)
-- 🎨 **Live preview features** and drag-drop uploads
-- 🔒 **Production-ready security** with private S3 access
-- 📱 **Responsive design** that works everywhere
+**Lưu trữ, tổ chức và duyệt bộ sưu tập meme của bạn một cách phong cách - tất cả được hỗ trợ bởi AI! 🎭**
 
-**Store, organize, and browse your meme collection with style - all powered by AI! 🎭**
+## ✨ Tính năng
 
-## ✨ Features
+- **Upload & Xem trước**: Upload hình ảnh kéo thả với xem trước card trực tiếp
+- **Tổ chức thông minh**: Phân loại và tìm kiếm dựa trên tag
+- **Giao diện hiện đại**: Giao diện sạch sẽ được xây dựng với Next.js và shadcn/ui
+- **Lưu trữ an toàn**: AWS S3 + CloudFront cho việc phân phối hình ảnh nhanh và bảo mật
+- **Thiết kế responsive**: Hoạt động hoàn hảo trên mọi thiết bị
 
-- **Upload & Preview**: Drag & drop image upload with live card preview
-- **Smart Organization**: Tag-based categorization and search
-- **Modern UI**: Clean interface built with Next.js and shadcn/ui
-- **Secure Storage**: AWS S3 + CloudFront for fast, secure image delivery
-- **Responsive Design**: Works perfectly on all devices
-
-## 🏗️ Architecture
+## 🏗️ Kiến trúc
 
 ```
 ┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
-│   Next.js App   │───▶│   CloudFront     │───▶│   S3 Bucket     │
-│   (Frontend)    │    │   (CDN)          │    │   (Storage)     │
+│   Ứng dụng      │───▶│   CloudFront     │───▶│   S3 Bucket     │
+│   Next.js       │    │   (CDN)          │    │   (Lưu trữ)     │
 └─────────────────┘    └──────────────────┘    └─────────────────┘
 ```
 
-- **Frontend**: Next.js 15 with TypeScript and shadcn/ui components
-- **Infrastructure**: AWS CDK for infrastructure as code
-- **Storage**: Private S3 bucket with CloudFront distribution
-- **Security**: Origin Access Control (OAC) - no direct S3 access
+- **Frontend**: Next.js 15 với TypeScript và các component shadcn/ui
+- **Hạ tầng**: AWS CDK cho infrastructure as code
+- **Lưu trữ**: S3 bucket riêng tư với phân phối CloudFront
+- **Bảo mật**: Origin Access Control (OAC) - không truy cập S3 trực tiếp
 
-## 🚀 Quick Start
+## 🚀 Bắt đầu nhanh
 
-### Prerequisites
-
+### Yêu cầu
 - Node.js 18+
-- AWS CLI configured (for backend deployment)
-- AWS CDK CLI installed
+- AWS CLI đã cấu hình (để deploy backend)
+- AWS CDK CLI đã cài đặt
 
-### Frontend Development
-
+### Phát triển Frontend
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
+Truy cập `http://localhost:3000`
 
-Visit `http://localhost:3000`
-
-### Backend Deployment
-
+### Deploy Backend
 ```bash
 cd backend
 npm install
 npm run build
-cdk bootstrap  # First time only
+cdk bootstrap  # Chỉ lần đầu tiên
 cdk deploy
 ```
 
-## 📁 Project Structure
+## 📁 Cấu trúc dự án
 
 ```
 fbmc-but-vibe-coded/
-├── frontend/                 # Next.js application
-│   ├── app/                 # App router pages
-│   │   ├── page.tsx         # Home page (browse memes)
-│   │   ├── upload/          # Upload page
-│   │   └── layout.tsx       # Root layout with navbar
-│   ├── components/          # React components
-│   │   ├── ui/              # shadcn/ui components
-│   │   ├── navbar.tsx       # Navigation bar
-│   │   ├── image-grid.tsx   # Meme grid display
-│   │   └── upload-dialog.tsx # Upload functionality
-│   └── lib/                 # Utilities
-├── backend/                 # AWS CDK infrastructure
-│   ├── lib/                 # CDK stack definitions
-│   ├── bin/                 # CDK app entry point
-│   └── cdk.json            # CDK configuration
+├── frontend/                 # Ứng dụng Next.js
+│   ├── app/                 # Các trang App router
+│   │   ├── page.tsx         # Trang chủ (duyệt meme)
+│   │   ├── upload/          # Trang upload
+│   │   └── layout.tsx       # Layout gốc với navbar
+│   ├── components/          # Các component React
+│   │   ├── ui/              # Các component shadcn/ui
+│   │   ├── navbar.tsx       # Thanh điều hướng
+│   │   ├── image-grid.tsx   # Hiển thị lưới meme
+│   │   └── upload-dialog.tsx # Chức năng upload
+│   └── lib/                 # Tiện ích
+├── backend/                 # Hạ tầng AWS CDK
+│   ├── lib/                 # Định nghĩa CDK stack
+│   ├── bin/                 # Điểm vào ứng dụng CDK
+│   └── cdk.json            # Cấu hình CDK
 └── README.md
 ```
 
-## 🎨 Key Features Explained
+## 🎨 Giải thích các tính năng chính
 
-### Live Upload Preview
+### Xem trước Upload trực tiếp
+- Xem trước card theo thời gian thực khi bạn nhập mô tả và thêm tag
+- Upload file kéo thả với phản hồi trực quan
+- Xem chính xác cách meme của bạn sẽ xuất hiện trước khi upload
 
-- Real-time card preview as you type description and add tags
-- Drag & drop file upload with visual feedback
-- See exactly how your meme will appear before uploading
+### Phân phối hình ảnh an toàn
+- Tất cả hình ảnh được lưu trữ trong S3 bucket riêng tư
+- CloudFront CDN cho phân phối toàn cầu nhanh chóng
+- Không truy cập S3 trực tiếp - mọi thứ đều thông qua CloudFront
 
-### Secure Image Delivery
+### Các component UI hiện đại
+- Được xây dựng với shadcn/ui cho thiết kế nhất quán, dễ tiếp cận
+- Layout lưới responsive cho việc duyệt meme
+- Điều hướng sạch sẽ với điều hướng dựa trên logo
 
-- All images stored in private S3 bucket
-- CloudFront CDN for fast global delivery
-- No direct S3 access - everything goes through CloudFront
-
-### Modern UI Components
-
-- Built with shadcn/ui for consistent, accessible design
-- Responsive grid layout for meme browsing
-- Clean navigation with logo-based home navigation
-
-## 🛠️ Tech Stack
+## 🛠️ Công nghệ sử dụng
 
 ### Frontend
-
-- **Framework**: Next.js 15 with App Router
-- **Language**: TypeScript
+- **Framework**: Next.js 15 với App Router
+- **Ngôn ngữ**: TypeScript
 - **Styling**: Tailwind CSS
 - **Components**: shadcn/ui (Radix UI primitives)
 - **Icons**: Lucide React
 
 ### Backend
-
-- **Infrastructure**: AWS CDK (TypeScript)
-- **Storage**: Amazon S3
+- **Hạ tầng**: AWS CDK (TypeScript)
+- **Lưu trữ**: Amazon S3
 - **CDN**: Amazon CloudFront
-- **Security**: Origin Access Control (OAC)
+- **Bảo mật**: Origin Access Control (OAC)
 
-## 🔒 Security Features
+## 🔒 Tính năng bảo mật
 
-- **Private S3 Bucket**: No public access allowed
-- **CloudFront Only**: All image access through CDN
-- **HTTPS Enforced**: SSL required for all connections
-- **Origin Access Control**: Modern AWS security for S3-CloudFront integration
+- **S3 Bucket riêng tư**: Không cho phép truy cập công khai
+- **Chỉ CloudFront**: Tất cả truy cập hình ảnh thông qua CDN
+- **Bắt buộc HTTPS**: Yêu cầu SSL cho tất cả kết nối
+- **Origin Access Control**: Bảo mật AWS hiện đại cho tích hợp S3-CloudFront
 
-## 📝 Development Notes
+## 📝 Ghi chú phát triển
 
 ### Frontend
-
-- Uses Next.js 15 with the App Router
-- All components are client-side rendered for interactivity
-- Image preview uses `URL.createObjectURL()` for instant feedback
-- Proper cleanup of object URLs to prevent memory leaks
+- Sử dụng Next.js 15 với App Router mới
+- Tất cả component được render phía client để tương tác
+- Xem trước hình ảnh sử dụng `URL.createObjectURL()` cho phản hồi tức thì
+- Dọn dẹp object URL đúng cách để tránh rò rỉ bộ nhớ
 
 ### Backend
+- Hạ tầng tối giản - chỉ S3 và CloudFront
+- Không có Lambda function hoặc database để đơn giản
+- CDK xử lý tất cả việc tạo và cấu hình tài nguyên AWS
+- Xuất CloudFront domain cho cấu hình frontend
 
-- Minimal infrastructure - just S3 and CloudFront
-- No Lambda functions or databases for simplicity
-- CDK handles all AWS resource creation and configuration
-- Outputs CloudFront domain for frontend configuration
+## 🚀 Triển khai
 
-## 🚀 Deployment
-
-1. **Deploy Backend First**:
-
+1. **Deploy Backend trước**:
    ```bash
    cd backend
    cdk deploy
    ```
+   Ghi chú CloudFront domain từ output.
 
-   Note the CloudFront domain from the output.
-
-2. **Update Frontend Config**:
-   Update `next.config.js` with your CloudFront domain.
+2. **Cập nhật cấu hình Frontend**:
+   Cập nhật `next.config.js` với CloudFront domain của bạn.
 
 3. **Deploy Frontend**:
-   Deploy to your preferred hosting platform (Vercel, Netlify, etc.)
+   Deploy lên nền tảng hosting ưa thích của bạn (Vercel, Netlify, v.v.)
 
-## 🤝 Contributing
+## 🤝 Đóng góp
 
-This project was built with a focus on clean, modern web development practices. Feel free to fork and customize for your own meme storage needs!
+Dự án này được xây dựng với trọng tâm là các thực hành phát triển web hiện đại và sạch sẽ. Hãy thoải mái fork và tùy chỉnh cho nhu cầu lưu trữ meme của riêng bạn!
 
-## 📄 License
+## 📄 Giấy phép
 
-MIT License - feel free to use this code for your own projects.
+Giấy phép MIT - hãy thoải mái sử dụng code này cho các dự án của bạn.
