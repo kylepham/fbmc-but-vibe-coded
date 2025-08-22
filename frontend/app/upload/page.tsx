@@ -114,9 +114,9 @@ export default function UploadPage() {
         </p>
       </header>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
         {/* Upload Form */}
-        <Card>
+        <Card className="xl:col-span-2">
           <CardHeader>
             <CardTitle>Upload Details</CardTitle>
           </CardHeader>
@@ -125,7 +125,7 @@ export default function UploadPage() {
           <div>
             <Label htmlFor="file">Image File</Label>
             <div
-              className={`mt-2 border-2 border-dashed rounded-lg p-8 text-center transition-colors cursor-pointer ${
+              className={`mt-2 border-2 border-dashed rounded-lg p-12 text-center transition-colors cursor-pointer min-h-[240px] flex items-center justify-center ${
                 dragActive
                   ? "border-primary bg-primary/5"
                   : "border-muted-foreground/25 hover:border-muted-foreground/50"
@@ -252,13 +252,13 @@ export default function UploadPage() {
         </Card>
 
         {/* Live Preview */}
-        <div className="space-y-4">
+        <div className="space-y-4 mt-8 xl:mt-0">
           <h3 className="text-lg font-semibold">Live Preview</h3>
           <p className="text-sm text-muted-foreground">
             See how your meme will appear in the collection
           </p>
           
-          <div className="max-w-sm">
+          <div className="w-full max-w-md mx-auto xl:max-w-none">
             <Card className="overflow-hidden hover:shadow-lg transition-shadow">
               <CardContent className="p-0">
                 <div className="aspect-square relative bg-muted">
