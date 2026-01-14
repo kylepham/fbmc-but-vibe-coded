@@ -1,6 +1,16 @@
 import { pgTable, serial, text, timestamp, varchar, integer } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
 
+// Users table
+export const users = pgTable('users', {
+  id: varchar('id', { length: 255 }).primaryKey(),
+  email: varchar('email', { length: 255 }).notNull().unique(),
+  name: varchar('name', { length: 255 }),
+  avatarUrl: text('avatar_url'),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
+});
+
 // Memes table
 export const memes = pgTable('memes', {
   id: serial('id').primaryKey(),
@@ -8,7 +18,7 @@ export const memes = pgTable('memes', {
   description: text('description'),
   imageUrl: text('image_url').notNull(),
   uploadedAt: timestamp('uploaded_at').defaultNow().notNull(),
-  userId: varchar('user_id', { length: 255 }),
+  userId: varchar('user_id', { length: 255 }).references(() => users.id, { onDelete: 'set null' }),
 });
 
 // Tags table
@@ -26,8 +36,16 @@ export const memeTags = pgTable('meme_tags', {
 });
 
 // Relations
-export const memesRelations = relations(memes, ({ many }) => ({
+export const usersRelations = relations(users, ({ many }) => ({
+  memes: many(memes),
+}));
+
+export const memesRelations = relations(memes, ({ many, one }) => ({
   memeTags: many(memeTags),
+  user: one(users, {
+    fields: [memes.userId],
+    references: [users.id],
+  }),
 }));
 
 export const tagsRelations = relations(tags, ({ many }) => ({
@@ -46,6 +64,8 @@ export const memeTagsRelations = relations(memeTags, ({ one }) => ({
 }));
 
 // Types
+export type User = typeof users.$inferSelect;
+export type NewUser = typeof users.$inferInsert;
 export type Meme = typeof memes.$inferSelect;
 export type NewMeme = typeof memes.$inferInsert;
 export type Tag = typeof tags.$inferSelect;
