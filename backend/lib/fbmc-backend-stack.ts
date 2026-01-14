@@ -10,7 +10,7 @@ export class FbmcBackendStack extends cdk.Stack {
 
     // S3 bucket for storing meme images - private access only through CloudFront
     const imagesBucket = new s3.Bucket(this, "FbmcImagesBucket", {
-      bucketName: `fbmc-images-${cdk.Aws.ACCOUNT_ID}-${cdk.Aws.REGION}`,
+      bucketName: `fbmc-${cdk.Aws.REGION}`,
       // No CORS needed - all access goes through CloudFront, not directly to S3
       // Completely block all public access
       publicReadAccess: false,
