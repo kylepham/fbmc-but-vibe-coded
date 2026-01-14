@@ -77,3 +77,6 @@ coverage/
 
 # Yarn Integrity file
 .yarn-integrity
+
+# Project notes
+NEXT_STEPS.md
